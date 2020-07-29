@@ -136,7 +136,7 @@ router.get("/", (req, res, next) => {
         });
 
         const idSheet=req.params.id
-        const rangeParams = 'Paramètres!F3:J37'
+        const rangeParams = 'Paramètres!F3:J33'
 
         const sheets = google.sheets({version: 'v4', auth});
     
@@ -177,7 +177,7 @@ router.get("/", (req, res, next) => {
   
         const idSheet=req.params.id
         const values=req.body.values
-        const rangeParams = 'Paramètres!J3:J37'
+        const rangeParams = 'Paramètres!J3:J33'
         const rangeOutputs = 'Résultats!A1:BB300'
 
         const sheets = google.sheets({version: 'v4', auth});
@@ -222,7 +222,7 @@ router.get("/", (req, res, next) => {
   
         const idSheet=req.params.id
         const values=req.body.values
-        const rangeParams = 'Paramètres!J3:J37'
+        const rangeParams = 'Paramètres!J3:J33'
 
         const sheets = google.sheets({version: 'v4', auth});
     
