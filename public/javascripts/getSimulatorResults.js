@@ -15,21 +15,28 @@ function getSimulatorResults(rows) {
     let indicators = {};
 
     while (rows[i] && rows[i].length!==0) {
+        let type = rows[i][4]; 
         indicator = {
             name: rows[i][1],
             value: rows[i][2],
             unit: rows[i][3],
-            type: rows[i][4],
             infos: rows[i][5]
         }
-        if (indicators[rows[i][0]]) {
-            indicators[rows[i][0]].push(indicator)
+
+        if (!indicators[rows[i][0]]) {
+            indicators[rows[i][0]]={}
+        }
+        
+        if (indicators[rows[i][0]][type]) {
+            indicators[rows[i][0]][type].push(indicator)
         }
         else {
-            indicators[rows[i][0]]=[indicator];
+            indicators[rows[i][0]][type]=[indicator];
         }
         i++
     }
+
+    console.log(indicators)
 
     var jaugeDatas = getJauge(rows, 28, 0) // i+1
 
