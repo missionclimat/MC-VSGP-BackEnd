@@ -36,8 +36,6 @@ function getSimulatorResults(rows) {
         i++
     }
 
-    console.log(indicators)
-
     var jaugeDatas = getJauge(rows, 28, 0) // i+1
 
     var graphs = {};
