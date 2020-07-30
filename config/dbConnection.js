@@ -1,10 +1,15 @@
 const mongoose = require("mongoose");
 
 mongoose
-  .connect(process.env.MONGODB_URI)
-  .then(() => {
-    console.log("Connected to the db");
+  .connect(process.env.MONGODB_URI, {
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useFindAndModify: true,
   })
-  .catch(err => {
+  .then((self) => {
+    console.log(`Connected to the Database: ${self.connection.name}`);
+  })
+  .catch((err) => {
     console.log(err);
   });
