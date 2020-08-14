@@ -8,7 +8,6 @@ const bodyParser = require("body-parser");
 
 // dependencies injection
 const session = require("express-session"); //sessions make data persist between http calls
-const passport = require("passport"); // auth library (needs sessions)
 
 var app = express();
 
