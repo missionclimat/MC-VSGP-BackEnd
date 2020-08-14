@@ -27,6 +27,8 @@ app.use(express.json());
 // app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 
+app.use(express.static(path.join(__dirname, "/public")));
+
 app.use(
   session({
     cookie: { secure: false, maxAge: 4 * 60 * 60 * 1000 }, // 4 hours
