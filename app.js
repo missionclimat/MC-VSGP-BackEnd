@@ -58,6 +58,7 @@ app.use(passport.session());
 app.use("/api/sheet", require("./routes/gsheet"));
 
 app.use("*", (req, res, next) => {
+  console.log("here");
   res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
