@@ -34,7 +34,6 @@ app.use(
     secret: process.env.SECRET_SESSION,
   })
 );
-console.log("hello world");
 
 // app.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URI);
