@@ -51,9 +51,6 @@ app.use(cors(corsOptions));
 //   next();
 // });
 
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.use("/api/sheet", require("./routes/gsheet"));
 
 app.use("*", (req, res, next) => {
