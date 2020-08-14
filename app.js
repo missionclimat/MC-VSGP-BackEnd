@@ -12,20 +12,18 @@ const session = require("express-session"); //sessions make data persist between
 var app = express();
 
 app.use(logger("dev"));
-app.use(
-  express.urlencoded({
-    extended: true,
-  })
-);
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-);
+
 app.use(express.json());
 // app.use(express.urlencoded({ extended: false }));
 // app.use(cookieParser());
 
+var corsOptions = {
+  origin: [process.env.FRONTEND_URI, process.env.FRONTEND_URL_SECURE],
+  credentials: true,
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.use(
@@ -36,14 +34,6 @@ app.use(
     secret: process.env.SECRET_SESSION,
   })
 );
-
-var corsOptions = {
-  origin: [process.env.FRONTEND_URI, process.env.FRONTEND_URL_SECURE],
-  credentials: true,
-  optionsSuccessStatus: 200,
-};
-
-app.use(cors(corsOptions));
 
 // app.use(function(req, res, next) {
 //   res.header("Access-Control-Allow-Origin", process.env.FRONTEND_URI);
