@@ -36,11 +36,11 @@ function getSimulatorResults(rows) {
         i++
     }
 
-    var jaugeDatas = getJauge(rows, 28, 0) // i+1
+    var jaugeDatas = getJauge(rows, 29, 0) // i+1
 
     var graphs = {};
 
-    graphs.climate = getCompoChartInfos(rows,12,0)
+    graphs.climate = getCompoChartInfos(rows,13,0)
     graphs.energy = getCompoChartInfos(rows,21,0)
 
 
