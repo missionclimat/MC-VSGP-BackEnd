@@ -6,7 +6,6 @@ var logger = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-require("./config/mongo"); // database connection setup
 // dependencies injection
 const session = require("express-session"); //sessions make data persist between http calls
 const passport = require("passport"); // auth library (needs sessions)
