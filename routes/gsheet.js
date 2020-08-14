@@ -93,7 +93,9 @@ router.get("/", (req, res, next) => {
     });
 
     const drive = google.drive({ version: "v3", auth });
-
+    console.log(process.env.SPREADSHEET_MASTER_ID);
+    console.log(process.env.GOOGLE_CREDENTIALS);
+    console.log(process.env.GOOGLE_APPLICATION_CREDENTIALS);
     drive.files
       .copy({ fileId: process.env.SPREADSHEET_MASTER_ID })
       .then((dbRes) => {
