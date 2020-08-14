@@ -1,12 +1,10 @@
 require("dotenv").config();
-require("./config/dbConnection");
 var express = require("express");
 var path = require("path");
-var cookieParser = require("cookie-parser");
+
 var logger = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const nodemailer = require("nodemailer");
 
 require("./config/mongo"); // database connection setup
 // dependencies injection
