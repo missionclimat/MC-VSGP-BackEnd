@@ -9,8 +9,6 @@ require("dotenv").config();
 router.get("/download/:id", (req, res, next) => {
   const idSheet = req.params.id;
 
-  console.log(idSheet);
-
   async function main() {
     const auth = new google.auth.GoogleAuth({
       // Scopes can be specified either as an array or as a single, space-delimited string.
@@ -28,7 +26,6 @@ router.get("/download/:id", (req, res, next) => {
           "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
       })
       .then((response) => {
-        //console.log(res))
         res.status(200).json({ results: response });
       })
       .catch((err) => console.log(err));
@@ -93,16 +90,23 @@ router.get("/", (req, res, next) => {
     });
 
     const drive = google.drive({ version: "v3", auth });
-    console.log(process.env.SPREADSHEET_MASTER_ID);
-    console.log(process.env.GOOGLE_CREDENTIALS);
-    console.log(process.env.GOOGLE_APPLICATION_CREDENTIALS);
     drive.files
       .copy({ fileId: process.env.SPREADSHEET_MASTER_ID })
       .then((dbRes) => {
-        res.status(200).json({ id: dbRes.data.id });
-      })
+        drive.permissions.create({
+          fileId: dbRes.data.id,
+          resource: {
+              role: 'writer',
+              type: 'anyone'
+          }
+        })
+          .then(permRes=> {
+            res.status(200).json({ id: dbRes.data.id })
+          })
+          .catch(res.status(500));
+        })
       .catch(res.status(500));
-  }
+      }
   main().catch(res.status(500));
 });
 
@@ -163,6 +167,7 @@ router.patch("/update/:id", (req, res, next) => {
 
     const idSheet = req.params.id;
     const values = req.body.values;
+    
     const rangeParams = "Paramètres!J3:J26";
     const rangeOutputs = "Résultats!A1:BB300";
 
