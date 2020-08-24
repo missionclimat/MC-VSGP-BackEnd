@@ -1,4 +1,4 @@
-const getAreaInfo = require('./getAreaInfos')
+const getAreaInfos = require('./getAreaInfos')
 const getLineChartInfos = require('./getLineChartInfos')
 const getPieInfos = require('./getPieInfos')
 const getJauge = require('./getJauge')
@@ -43,6 +43,143 @@ function getSimulatorResults(rows) {
     graphs.climate = getCompoChartInfos(rows,13,0)
     graphs.energy = getCompoChartInfos(rows,21,0)
 
+    // <ChartContainer
+    //       title={results.emiFrance.total.graph.data.title}
+    //       subtitle={results.emiFrance.total.subtitle}
+    //       graphData={results.emiFrance.total.graph}
+    //       graphType="CompoChart"
+    //       graphText={results.emiFrance.total.text}
+    //       legendData={results.emiFrance.total.graph.graphDatas}
+    //       sourceData={results.emiFrance.total.source}
+    //     />
+
+    var completeResults = {
+        emissions : {
+            title: rows[37][0],
+            intro: rows[38][1],
+            graphs: []
+        },
+        energieFinale : {
+            title: rows[58][0],
+            intro: rows[59][1],
+            graphs: []
+        },
+        energieRenouvelable : {
+            title: rows[72][0],
+            intro: rows[73][1],
+            graphs: []
+        },
+        energieFacture : {
+            title: rows[86][0],
+            intro: rows[87][1],
+            graphs: []
+        },
+        polluants : {
+            title: rows[109][0],
+            intro: rows[110][1],
+            graphs: []
+        },
+    };
+
+    completeResults.emissions.graphs[0]={
+        graphData: getCompoChartInfos(rows,39,0),
+        subtitle: rows[45][1],
+        graphText: rows[46][1],
+        source: rows[47][1],
+        graphType: "CompoChart",
+        title: getCompoChartInfos(rows,39,0).data.title,
+        legendData: getCompoChartInfos(rows,39,0).graphDatas
+    }
+
+    completeResults.emissions.graphs[1]={
+        graphData: getCompoChartInfos(rows,50,0),
+        subtitle: rows[53][1],
+        graphText: rows[54][1],
+        source: rows[55][1],
+        graphType: "CompoChart",
+        title: getCompoChartInfos(rows,50,0).data.title,
+        legendData: getCompoChartInfos(rows,50,0).graphDatas
+    }
+
+    completeResults.energieFinale.graphs[0]={
+        graphData: getCompoChartInfos(rows,61,0),
+        subtitle: rows[67][1],
+        graphText: rows[68][1],
+        source: rows[69][1],
+        graphType: "CompoChart",
+        title: getCompoChartInfos(rows,61,0).data.title,
+        legendData: getCompoChartInfos(rows,61,0).graphDatas
+    }
+
+    completeResults.energieRenouvelable.graphs[0]={
+        graphData: getCompoChartInfos(rows,75,0),
+        subtitle: rows[80][1],
+        graphText: rows[81][1],
+        source: rows[82][1],
+        graphType: "CompoChart",
+        title: getCompoChartInfos(rows,75,0).data.title,
+        legendData: getCompoChartInfos(rows,75,0).graphDatas
+    }
+
+    completeResults.energieFacture.graphs[0]={
+        graphData: getCompoChartInfos(rows,89,0),
+        subtitle: rows[103][1],
+        graphText: rows[104][1],
+        source: rows[105][1],
+        graphType: "CompoChart",
+        title: getCompoChartInfos(rows,89,0).data.title,
+        legendData: getCompoChartInfos(rows,89,0).graphDatas
+    }
+
+    completeResults.polluants.graphs[0]={
+        graphData: getCompoChartInfos(rows,112,0),
+        subtitle: rows[118][1],
+        graphText: rows[119][1],
+        source: rows[120][1],
+        graphType: "CompoChart",
+        title: getCompoChartInfos(rows,112,0).data.title,
+        legendData: getCompoChartInfos(rows,112,0).graphDatas
+    }
+    
+    completeResults.polluants.graphs[1]={
+        graphData: getCompoChartInfos(rows,123,0),
+        subtitle: rows[129][1],
+        graphText: rows[130][1],
+        source: rows[131][1],
+        graphType: "CompoChart",
+        title: getCompoChartInfos(rows,123,0).data.title,
+        legendData: getCompoChartInfos(rows,123,0).graphDatas
+    }
+    
+    completeResults.polluants.graphs[2]={
+        graphData: getCompoChartInfos(rows,134,0),
+        subtitle: rows[140][1],
+        graphText: rows[141][1],
+        source: rows[142][1],
+        graphType: "CompoChart",
+        title: getCompoChartInfos(rows,134,0).data.title,
+        legendData: getCompoChartInfos(rows,134,0).graphDatas
+    }
+
+    completeResults.polluants.graphs[3]={
+        graphData: getCompoChartInfos(rows,145,0),
+        subtitle: rows[151][1],
+        graphText: rows[152][1],
+        source: rows[153][1],
+        graphType: "CompoChart",
+        title: getCompoChartInfos(rows,145,0).data.title,
+        legendData: getCompoChartInfos(rows,145,0).graphDatas
+    }
+
+    completeResults.polluants.graphs[4]={
+        graphData: getCompoChartInfos(rows,156,0),
+        subtitle: rows[162][1],
+        graphText: rows[163][1],
+        source: rows[164][1],
+        graphType: "CompoChart",
+        title: getCompoChartInfos(rows,156,0).data.title,
+        legendData: getCompoChartInfos(rows,156,0).graphDatas
+    }
 
 
     // var emiSecteur = getAreaInfo(rows, 0,0)
@@ -213,7 +350,8 @@ function getSimulatorResults(rows) {
     return {
         indicators: indicators,
         graphs : graphs,
-        jaugeDatas: jaugeDatas
+        jaugeDatas: jaugeDatas,
+        completeResults: completeResults
         // emiSecteur: emiSecteur,
         // emiSecteurGnl: emiSecteurGnl,
         // emiSecteurPie: emiSecteurPie,
