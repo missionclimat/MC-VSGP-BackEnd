@@ -46,11 +46,16 @@ function getCompoChartInfos(rows,i,j) {
   
     }
 
+    
+
     graphDatas.map((dat) => {
-        dat.subText = datas.data[datas.data.length-1][dat.dataKey] + " " + datas.yTitle + " / Evolution : "
-        let evolution = Math.round((datas.data[datas.data.length-1][dat.dataKey]-datas.data[0][dat.dataKey])/datas.data[0][dat.dataKey]*100)
-        evolution >= 0 ? dat.subText += "+" + evolution + "%" : dat.subText += evolution  + "%" 
-        return dat
+
+      let num = datas.data[datas.data.length-1][dat.dataKey]
+      let numSt = parseFloat(num).toLocaleString('en').split(",").join(" ")
+      dat.subText = numSt + " " + datas.yTitle + " / Evolution : "
+      let evolution = Math.round((datas.data[datas.data.length-1][dat.dataKey]-datas.data[0][dat.dataKey])/datas.data[0][dat.dataKey]*100)
+      evolution >= 0 ? dat.subText += "+" + evolution + "%" : dat.subText += evolution  + "%" 
+      return dat
     })
   
     return {data: datas, graphDatas: graphDatas}

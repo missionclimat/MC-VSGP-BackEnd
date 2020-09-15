@@ -79,6 +79,11 @@ function getSimulatorResults(rows) {
             intro: rows[110][1],
             graphs: []
         },
+        economie: {
+            title: rows[167][0],
+            intro: rows[168][1],
+            graphs: []
+        }
     };
 
     completeResults.emissions.graphs[0]={
@@ -180,6 +185,39 @@ function getSimulatorResults(rows) {
         title: getCompoChartInfos(rows,156,0).data.title,
         legendData: getCompoChartInfos(rows,156,0).graphDatas
     }
+
+    completeResults.economie.graphs[0]={
+        graphData: getCompoChartInfos(rows,169,0),
+        subtitle: rows[176][1],
+        graphText: rows[177][1],
+        source: rows[178][1],
+        graphType: "CompoChart",
+        title: getCompoChartInfos(rows,169,0).data.title,
+        legendData: getCompoChartInfos(rows,169,0).graphDatas
+    }
+
+    completeResults.economie.graphs[1]={
+        graphData: getCompoChartInfos(rows,182,0),
+        subtitle: rows[189][1],
+        graphText: rows[190][1],
+        source: rows[192][1],
+        graphType: "CompoChart",
+        title: getCompoChartInfos(rows,182,0).data.title,
+        legendData: getCompoChartInfos(rows,182,0).graphDatas
+    }
+
+    completeResults.economie.graphs[2]={
+        graphData: getCompoChartInfos(rows,195,0),
+        subtitle: rows[202][1],
+        graphText: rows[203][1],
+        source: rows[204][1],
+        graphType: "CompoChart",
+        title: getCompoChartInfos(rows,195,0).data.title,
+        legendData: getCompoChartInfos(rows,195,0).graphDatas
+    }
+
+    
+    
 
 
     // var emiSecteur = getAreaInfo(rows, 0,0)
