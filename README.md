@@ -8,8 +8,6 @@ https://developers.google.com/workspace/guides/create-credentials?hl=fr#service-
 
 Place the google credentials file at the root.
 
-Place client and server folders in the same folder and name them "client" and "server".
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -29,7 +27,7 @@ Builds the app for production to the `./server/public` folder.<br />
 ## Environment variable
 
 ### .env (development)
-PORT = numéro de port (par ex : 4000)<br />
+PORT = numéro de port (for instance : 4000)<br />
 FRONTEND_URI : app front url<br />
 FRONTEND_URL_SECURE : app secured front url<br />
 GOOGLE_APPLICATION_CREDENTIALS : google credentials file name (ex: “google-credentials.json”)<br />
@@ -39,8 +37,14 @@ SPREADSHEET_MASTER_ID : id of the google sheet hosting the calculation model (ht
 ### .env.production (production)
 Same with production urls
 
-## Deployment
+## Deployment and production launch
+Place client and server folders in the same folder and name them "client" and "server".
 
-### `npm run build`
+`npm run build` : builds the front for production to the `./server/public` folder.
+
+`NODE_ENV=production npm start` : runs the app.
+
+
+
 
 
