@@ -8,7 +8,7 @@
     "build-react": "cd ../client && npm run build && cp -r build/* ../server/public"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^1.6.5",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
